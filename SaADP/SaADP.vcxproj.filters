@@ -21,9 +21,15 @@
     <ClCompile Include="stackItem.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="userInterface.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stackitem.h">
+    <ClInclude Include="stackItem.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="userInterface.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

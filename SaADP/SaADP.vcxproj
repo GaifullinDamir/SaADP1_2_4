@@ -24,7 +24,7 @@
     <ProjectGuid>{dec25072-6107-4eed-b8dc-0049e3c9d5cd}</ProjectGuid>
     <RootNamespace>SaADP</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>SaADP1</ProjectName>
+    <ProjectName>SaADP1_2_4</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -142,9 +142,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stackItem.cpp" />
+    <ClCompile Include="userInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stackitem.h" />
+    <ClInclude Include="stackItem.h" />
+    <ClInclude Include="userInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
