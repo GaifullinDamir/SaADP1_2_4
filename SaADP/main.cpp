@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "stackItem.h"
 #include "userInterface.h"
 
@@ -8,4 +9,7 @@ int main()
 	StackItem* headSecond = new StackItem;
 	headMain = stackInit(headMain);
 	headSecond = stackInit(headSecond);
+	int u = 0;
+	u = userInput();
+	
 }

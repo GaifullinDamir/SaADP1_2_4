@@ -1,5 +1,6 @@
 #include <iostream>
 #include "stackItem.h"
+#include "userInterface.h"
 
 StackItem* stackInit(StackItem* head)
 {
@@ -16,7 +17,7 @@ void addItem(StackItem*& head, int data)
 		current -> data = data;
 		head = current;
 	}
-	catch (const std::exception&)
+	catch (std::exception)
 	{
 		std::cout << "The stack is full. Can't be added." << std::endl;
 	}
