@@ -93,6 +93,7 @@ void workWithUser(StackItem*& headMain, StackItem*& headSecond)
 		case(AddItem):
 		{
 			caseAddItem(headMain, headSecond, 1);
+			break;
 		}
 		case(AddMultipleItems):
 		{
@@ -100,10 +101,17 @@ void workWithUser(StackItem*& headMain, StackItem*& headSecond)
 			std::cout << std::endl;
 			int amountOffElements = userInput(-1);
 			caseAddItem(headMain, headSecond, amountOffElements);
+			break;
 		}
 		case(DeleteItem):
 		{
 			caseDeleteItem(headMain, headSecond);
+			break;
+		}
+		case(PrintStack):
+		{
+			casePrintStack(headMain, headSecond);
+			break;
 		}
 		default:
 			break;
@@ -150,7 +158,7 @@ void caseAddItem(StackItem*& headMain, StackItem*& headSecond, int numberOfItems
 				default:
 					break;
 			}
-		break;
+			break;
 		}
 		default:
 			break;
@@ -189,7 +197,7 @@ void caseDeleteItem(StackItem*& headMain, StackItem*& headSecond)
 				default:
 					break;
 			}
-		break;
+			break;
 		}
 		default:
 			break;
@@ -210,6 +218,7 @@ void casePrintStack(StackItem*& headMain, StackItem*& headSecond)
 			std::cout << std::endl;
 			printStack(headMain);
 			std::cout << std::endl;
+			break;
 		}
 		case(SecondStack):
 		{
@@ -217,6 +226,7 @@ void casePrintStack(StackItem*& headMain, StackItem*& headSecond)
 			std::cout << std::endl;
 			printStack(headSecond);
 			std::cout << std::endl;
+			break;
 		}
 		default:
 			break;
