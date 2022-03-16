@@ -31,6 +31,8 @@ void addMultipleItems(StackItem*& head, int amount)
 	{
 		addItem(head);
 	}
+	std::cout << "Elements in quantity: " << amount << "- were added to the stack." << std::endl;
+	std::cout << std::endl;
 }
 
 bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond)

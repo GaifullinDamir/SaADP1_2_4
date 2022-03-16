@@ -120,14 +120,13 @@ void caseAddItem(StackItem*& headMain, StackItem*& headSecond, int numberOfItems
 		case(RandomItem):
 		{
 			addMultipleItems(headMain, numberOfItems);
-			std::cout << "Elements in quantity: "<< numberOfItems <<"- were added to the stack." << std::endl;
-			std::cout << std::endl;
 			break;
 		}
 		case(ItemFromAdditionalStack):
 		{
 			bool check = true;
-			for (int item = 0; item < numberOfItems; i++)
+			int movedItems;
+			for (movedItems = 0; movedItems < numberOfItems; movedItems++)
 			{
 				check = moveToSecondaryStack(headSecond, headMain);
 				if (check == false) { break; }
@@ -144,7 +143,7 @@ void caseAddItem(StackItem*& headMain, StackItem*& headSecond, int numberOfItems
 				case(false):
 				{
 					std::cout << "The stack doesn't have that many elements to move." << std::endl;
-					std::cout << "Only" << item << " items were moved"
+					std::cout << "Only" << movedItems << " items were moved" << std::endl;
 					std::cout << std::endl;
 					break;
 				}
@@ -167,17 +166,7 @@ void caseDeleteItem(StackItem*& headMain, StackItem*& headSecond)
 	{
 		case(ClearMemory):
 		{
-			bool check = emptyCheck(headMain);
-			switch (check)
-			{
-				case(true):
-
-			default:
-				break;
-			}
 			deleteItem(headMain);
-			std::cout << "The element has been removed from the stack." << std::endl;
-			std::cout << std::endl;
 			break;
 		}
 		case(MoveItem):
@@ -201,6 +190,33 @@ void caseDeleteItem(StackItem*& headMain, StackItem*& headSecond)
 					break;
 			}
 		break;
+		}
+		default:
+			break;
+	}
+}
+
+void casePrintStack(StackItem*& headMain, StackItem*& headSecond)
+{
+	int stackOption;
+	std::cout << "What stack to print?" << std::endl;
+	std::cout << "Primary (1) or Secondary (2)." << std::endl;
+	stackOption = userInput(NumbOfStacks);
+	switch (stackOption)
+	{
+		case(MainStack):
+		{
+			std::cout << "Primary stack:" << std::endl;
+			std::cout << std::endl;
+			printStack(headMain);
+			std::cout << std::endl;
+		}
+		case(SecondStack):
+		{
+			std::cout << "Secondary stack:" << std::endl;
+			std::cout << std::endl;
+			printStack(headSecond);
+			std::cout << std::endl;
 		}
 		default:
 			break;
