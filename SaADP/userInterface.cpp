@@ -159,7 +159,7 @@ void caseAddItem(StackItem*& headMain, StackItem*& headSecond, int numberOfItems
 				case(false):
 				{
 					std::cout << "   The stack doesn't have that many elements to move." << std::endl;
-					std::cout << "   Only" << movedItems << " items were moved" << std::endl;
+					std::cout << "   Only " << movedItems << " items were moved" << std::endl;
 					std::cout << std::endl;
 					break;
 				}
