@@ -1,10 +1,24 @@
 #pragma once
 #include "stackItem.h"
 
-const int mainMenu = 0;
-const int secondMenu = 1;
-const int numbOfOptionsMain = 4;
-const int numbOfOptionsSecond = 2;
+enum userInterface
+{
+	mainMenu = 0,
+	secondMenu = 1,
+	numbOfOptionsMain = 4,
+	numbOfOptionsSecond = 2
+};
+
+enum options
+{
+	addOneItem,
+	addMultipleItems,
+	removeItem,
+	printStack
+};
+
+StackItem* headMain = new StackItem;
+StackItem* headSecond = new StackItem;
 
 void printMainMenu();
 

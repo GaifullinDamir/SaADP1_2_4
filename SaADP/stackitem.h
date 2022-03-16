@@ -9,13 +9,13 @@ struct StackItem
 };
 StackItem* stackInit(StackItem* head);
 
-void addItem(StackItem*& head, int data);
+void addItem(StackItem*& head);
 
 void addMultipleItems(StackItem*& head, int amount);
 
-void moveToSecondaryStack(StackItem*& headMain, StackItem*& headSecond);
+bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond);
 
-void moveToMainStack(StackItem*& headMain, StackItem*& headSecond);
+//void moveToMainStack(StackItem*& headMain, StackItem*& headSecond);
 
 bool emptyCheck(StackItem* head);
 

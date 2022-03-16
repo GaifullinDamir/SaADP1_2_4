@@ -14,12 +14,22 @@ void printMainMenu()
 
 void printAdditionalMenu(int option)
 {
-	int secondOption;
 	switch (option)
 	{
 		case(1):
 		{
-			std::cout << "Add a random element or from an additional stack?" << std::endl;
+			std::cout << "Add a random element (1) or from an additional stack (2)?" << std::endl;
+			break;
+		}
+		case(2):
+		{
+			std::cout << "Add a random element (1) or from an additional stack (2)?" << std::endl;
+			break;
+		}
+		case(3):
+		{
+			std::cout << "Remove element (1) or move to additional stack (2)?" << std::endl;
+			break;
 		}
 	default:
 		break;
@@ -41,19 +51,14 @@ int userInput(int numberOfMenu)
 			option = std::stoi(optionInput);
 			check = false;
 		}
-		catch (std::invalid_argument)
+		//catch (std::invalid_argument)
+		//{
+		//	std::cout << "Only numbers are allowed." << std::endl;
+		//	check = true;
+		//}
+		catch (const std::exception&)
 		{
-			std::cout << "Only numbers are allowed." << std::endl;
-			check = true;
-		}
-		catch (std::out_of_range)
-		{
-			std::cout << "The number is too big." << std::endl;
-			check = true;
-		}
-		catch (std::exception)
-		{
-			std::cout << "Other exeption." << std::endl;
+			std::cout << "Other exception." << std::endl;
 			check = true;
 		}
 		
@@ -67,7 +72,11 @@ int userInput(int numberOfMenu)
 		}
 		else if (numberOfMenu == secondMenu)
 		{
-
+			if (option < 1 || option > numbOfOptionsSecond)
+			{
+				std::cout << "There is no such menu item." << std::endl;
+				check = true;
+			}
 		}
 	}
 	return option;
@@ -75,11 +84,50 @@ int userInput(int numberOfMenu)
 void processInput(StackItem* headMain, StackItem* headSecond)
 {
 	int option = userInput();
+	int secondOption;
 	switch (option)
 	{
-		case(1):
-
-			
+		case(addOneItem):
+		{
+			printAdditionalMenu(option);
+			secondOption = userInput();
+			switch (secondOption)
+			{
+				case(1):
+				{
+					addItem(headMain);
+					std::cout << "An element has been added to the main stack." << std::endl;
+				}
+				case(2):
+				{
+					bool check = moveToSecondaryStack(headSecond, headMain);
+					switch (check)
+					{
+						case(true):
+						{
+							std::cout << "Item added from additional stack." << std::endl;
+						}
+						case(false):
+						{
+							std::cout << "The stack is empty. Nothing to move." << std::endl;
+						}
+					default:
+						break;
+					}
+				}
+			default:
+				break;
+			}
+			if (secondOption == 1)
+			{
+				addItem(headMain);
+				std::cout << "An element has been added to the main stack." << std::endl;
+			}
+			else if (secondOption == 2)
+			{
+				
+			}
+		}
 
 	default:
 		break;

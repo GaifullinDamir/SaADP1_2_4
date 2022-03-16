@@ -8,16 +8,17 @@ StackItem* stackInit(StackItem* head)
 	return head;
 }
 
-void addItem(StackItem*& head, int data)
+void addItem(StackItem*& head)
 {
+	srand(static_cast<unsigned int>(time(0)));
 	try
 	{
 		StackItem* current = new StackItem;
 		current -> previous = head;
-		current -> data = data;
+		current -> data = rand();
 		head = current;
 	}
-	catch (std::exception)
+	catch (const std::exception&)
 	{
 		std::cout << "The stack is full. Can't be added." << std::endl;
 	}
@@ -25,30 +26,36 @@ void addItem(StackItem*& head, int data)
 
 void addMultipleItems(StackItem*& head, int amount)
 {
-	srand(static_cast<unsigned int>(time(0)));
-
 	for (int i = 0; i < amount; i++)
 	{
-		int data = rand();
-		addItem(head, data);
+		addItem(head);
 	}
 }
 
-void moveToSecondaryStack(StackItem*& headMain, StackItem*& headSecond)
+bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond)
 {
-	StackItem* current = headMain;
-	headMain = headMain -> previous;
-	current -> previous = headSecond;
-	headSecond = current;
+	if(!emptyCheck(headFirst))
+	{
+		StackItem* current = headFirst;
+		headFirst = headMain->previous;
+		current->previous = headSecond;
+		headSecond = current;
+		return true;
+	}
+	else
+	{
+		return false
+	}
+
 }
 
-void moveToMainStack(StackItem*& headMain, StackItem*& headSecond)
-{
-	StackItem* current = headSecond;
-	headSecond = headSecond -> previous;
-	current -> previous = headMain;
-	headMain = current;
-}
+//void moveToMainStack(StackItem*& headMain, StackItem*& headSecond)
+//{
+//	StackItem* current = headSecond;
+//	headSecond = headSecond -> previous;
+//	current -> previous = headMain;
+//	headMain = current;
+//}
 
 bool emptyCheck(StackItem* head)
 {
