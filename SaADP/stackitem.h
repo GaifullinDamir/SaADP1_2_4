@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "userInterface.h"
 
 struct StackItem
 {
@@ -14,8 +13,6 @@ void addItem(StackItem*& head);
 void addMultipleItems(StackItem*& head, int amount);
 
 bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond);
-
-//void moveToMainStack(StackItem*& headMain, StackItem*& headSecond);
 
 bool emptyCheck(StackItem* head);
 

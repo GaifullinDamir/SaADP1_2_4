@@ -10,6 +10,7 @@ void printMainMenu()
 	std::cout << "2. Add multiple elements to the stack." << std::endl;
 	std::cout << "3. Remove an element from the stack." << std::endl;
 	std::cout << "4. Display stack on screen." << std::endl;
+	std::cout << std::endl;
 }
 
 void printAdditionalMenu(int option)
@@ -19,16 +20,19 @@ void printAdditionalMenu(int option)
 		case(1):
 		{
 			std::cout << "Add a random element (1) or from an additional stack (2)?" << std::endl;
+			std::cout << std::endl;
 			break;
 		}
 		case(2):
 		{
 			std::cout << "Add a random element (1) or from an additional stack (2)?" << std::endl;
+			std::cout << std::endl;
 			break;
 		}
 		case(3):
 		{
 			std::cout << "Remove element (1) or move to additional stack (2)?" << std::endl;
+			std::cout << std::endl;
 			break;
 		}
 		default:
@@ -46,7 +50,7 @@ int userInput(int numberOfMenu)
 	{
 		try
 		{
-			std::cout << "Enter selection number, please." << std::endl;
+			std::cout << "Enter a number, please: ";
 			std::cin >> optionInput;
 			option = std::stoi(optionInput);
 			check = false;
@@ -54,82 +58,150 @@ int userInput(int numberOfMenu)
 
 		catch (const std::exception&)
 		{
-			std::cout << "Other exception." << std::endl;
+			std::cout << "Please enter a number!" << std::endl;
+			std::cout << std::endl;
 			check = true;
 		}
 		
-		if (numberOfMenu == mainMenu)
+		if (numberOfMenu == MainMenu)
 		{
-			if (option < 1 || option > numbOfOptionsMain)
+			if (option < 1 || option > NumbOfOptionsMain)
 			{
 				std::cout << "There is no such menu item." << std::endl;
+				std::cout << std::endl;
 				check = true;
 			}
 		}
-		else if (numberOfMenu == secondMenu)
+		else if (numberOfMenu == SecondMenu)
 		{
-			if (option < 1 || option > numbOfOptionsSecond)
+			if (option < 1 || option > NumbOfOptionsSecond)
 			{
 				std::cout << "There is no such menu item." << std::endl;
+				std::cout << std::endl;
 				check = true;
 			}
 		}
 	}
 	return option;
 }
-void processInput(/*StackItem*& headMain, StackItem*& headSecond*/)
+void workWithUser(StackItem*& headMain, StackItem*& headSecond)
 {
-	StackItem* headMain = new StackItem;
-	StackItem* headSecond = new StackItem;
-	headMain = stackInit(headMain);
-	headSecond = stackInit(headSecond);
 
-	int option = userInput(numbOfOptionsMain);
-	int secondOption;
+	int option = userInput(NumbOfOptionsMain);
 	switch (option)
 	{
-		case(addOneItem):
+		case(AddItem):
 		{
-			printAdditionalMenu(option);
-			secondOption = userInput(numbOfOptionsSecond);
-			switch (secondOption)
+			caseAddItem(headMain, headSecond, 1);
+		}
+		case(AddMultipleItems):
+		{
+			std::cout << "How many elements to add to the stack?" << std::endl;
+			std::cout << std::endl;
+			int amountOffElements = userInput(-1);
+			caseAddItem(headMain, headSecond, amountOffElements);
+		}
+		case(DeleteItem):
+		{
+			caseDeleteItem(headMain, headSecond);
+		}
+		default:
+			break;
+	}
+}
+
+void caseAddItem(StackItem*& headMain, StackItem*& headSecond, int numberOfItems)
+{
+	int secondOption;
+	printAdditionalMenu(AddItem);
+	secondOption = userInput(NumbOfOptionsSecond);
+	switch (secondOption)
+	{
+		case(RandomItem):
+		{
+			addMultipleItems(headMain, numberOfItems);
+			std::cout << "Elements in quantity: "<< numberOfItems <<"- were added to the stack." << std::endl;
+			std::cout << std::endl;
+			break;
+		}
+		case(ItemFromAdditionalStack):
+		{
+			bool check = true;
+			for (int item = 0; item < numberOfItems; i++)
 			{
-				case(1):
+				check = moveToSecondaryStack(headSecond, headMain);
+				if (check == false) { break; }
+			}
+
+			switch (check)
+			{
+				case(true):
 				{
-					addItem(headMain);
-					std::cout << "An element has been added to the main stack." << std::endl;
+					std::cout << "Elements in quantity: " << numberOfItems <<" added from additional stack." << std::endl;
+					std::cout << std::endl;
+					break;
 				}
-				case(2):
+				case(false):
 				{
-					bool check = moveToSecondaryStack(headSecond, headMain);
-					switch (check)
-					{
-						case(true):
-						{
-							std::cout << "Item added from additional stack." << std::endl;
-						}
-						case(false):
-						{
-							std::cout << "The stack is empty. Nothing to move." << std::endl;
-						}
-						default:
-							break;
-					}
+					std::cout << "The stack doesn't have that many elements to move." << std::endl;
+					std::cout << "Only" << item << " items were moved"
+					std::cout << std::endl;
+					break;
 				}
 				default:
 					break;
 			}
-			if (secondOption == 1)
-			{
-				addItem(headMain);
-				std::cout << "An element has been added to the main stack." << std::endl;
-			}
-			else if (secondOption == 2)
-			{
-				
-			}
+		break;
 		}
+		default:
+			break;
+	}
+}
 
+void caseDeleteItem(StackItem*& headMain, StackItem*& headSecond)
+{
+	int secondOption;
+	printAdditionalMenu(DeleteItem);
+	secondOption = userInput(NumbOfOptionsSecond);
+	switch (secondOption)
+	{
+		case(ClearMemory):
+		{
+			bool check = emptyCheck(headMain);
+			switch (check)
+			{
+				case(true):
+
+			default:
+				break;
+			}
+			deleteItem(headMain);
+			std::cout << "The element has been removed from the stack." << std::endl;
+			std::cout << std::endl;
+			break;
+		}
+		case(MoveItem):
+		{
+			bool check = moveToSecondaryStack(headMain, headSecond);
+			switch (check)
+			{
+				case(true):
+				{
+					std::cout << "Item moved to additional stack." << std::endl;
+					std::cout << std::endl;
+					break;
+				}
+				case(false):
+				{
+					std::cout << "The stack is empty. Nothing to move." << std::endl;
+					std::cout << std::endl;
+					break;
+				}
+				default:
+					break;
+			}
+		break;
+		}
 		default:
 			break;
 	}

@@ -50,13 +50,6 @@ bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond)
 
 }
 
-//void moveToMainStack(StackItem*& headMain, StackItem*& headSecond)
-//{
-//	StackItem* current = headSecond;
-//	headSecond = headSecond -> previous;
-//	current -> previous = headMain;
-//	headMain = current;
-//}
 
 bool emptyCheck(StackItem* head)
 {
@@ -77,10 +70,13 @@ void deleteItem(StackItem*& head)
 		StackItem* current = head;
 		head = head -> previous;
 		delete current;
+		std::cout << "The element has been removed from the stack." << std::endl;
+		std::cout << std::endl;
 	}
 	else
 	{
 		std::cout << "The stack is empty. Nothing to delete." << std::endl;
+		std::cout << std::endl;
 	}
 }
 

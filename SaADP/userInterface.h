@@ -3,23 +3,27 @@
 
 enum userInterface
 {
-	mainMenu = 0,
-	secondMenu = 1,
-	numbOfOptionsMain = 4,
-	numbOfOptionsSecond = 2
+	MainMenu = 0,
+	SecondMenu = 1,
+	NumbOfOptionsMain = 4,
+	NumbOfOptionsSecond = 2
 };
 
 enum options
 {
-	addOneItem,
-	addMultipleItems,
-	removeItem,
-	printStack
+	AddItem = 1,
+	AddMultipleItems,
+	DeleteItem,
+	PrintStack
 };
 
-
-//StackItem* headMain = new StackItem;
-//StackItem* headSecond = new StackItem;
+enum cases
+{
+	RandomItem = 1,
+	ItemFromAdditionalStack = 2,
+	ClearMemory = 1,
+	MoveItem = 2
+};
 
 void printMainMenu();
 
@@ -27,5 +31,8 @@ void printAdditionalMenu(int option);
 
 int userInput(int numberOfMenu);
 
-void processInput(/*StackItem*& headMain, StackItem*& headSecond*/);
+void workWithUser(StackItem*& headMain, StackItem*& headSecond);
 
+void caseAddItem(StackItem*& headMain, StackItem*& headSecond, int numberOfItems);
+
+void caseDeleteItem(StackItem*& headMain, StackItem*& headSecond);

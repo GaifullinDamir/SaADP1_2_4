@@ -5,10 +5,10 @@
 
 int main()
 {
-	/*StackItem* headMain = new StackItem;
+	StackItem* headMain = new StackItem;
 	StackItem* headSecond = new StackItem;
 	headMain = stackInit(headMain);
-	headSecond = stackInit(headSecond);*/
-
-	
+	headSecond = stackInit(headSecond);
+	printMainMenu();
+	workWithUser(headMain, headSecond);
 }
