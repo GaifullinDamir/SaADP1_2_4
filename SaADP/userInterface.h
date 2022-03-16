@@ -17,14 +17,15 @@ enum options
 	printStack
 };
 
-StackItem* headMain = new StackItem;
-StackItem* headSecond = new StackItem;
+
+//StackItem* headMain = new StackItem;
+//StackItem* headSecond = new StackItem;
 
 void printMainMenu();
 
 void printAdditionalMenu(int option);
 
-int userInput();
+int userInput(int numberOfMenu);
 
-void processInput(int option);
+void processInput(/*StackItem*& headMain, StackItem*& headSecond*/);
 

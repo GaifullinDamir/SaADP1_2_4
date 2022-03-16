@@ -2,6 +2,7 @@
 #include "stackItem.h"
 #include "userInterface.h"
 
+
 StackItem* stackInit(StackItem* head)
 {
 	head = NULL;
@@ -37,14 +38,14 @@ bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond)
 	if(!emptyCheck(headFirst))
 	{
 		StackItem* current = headFirst;
-		headFirst = headMain->previous;
+		headFirst = headFirst -> previous;
 		current->previous = headSecond;
 		headSecond = current;
 		return true;
 	}
 	else
 	{
-		return false
+		return false;
 	}
 
 }

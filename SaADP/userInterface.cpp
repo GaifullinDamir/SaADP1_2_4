@@ -31,8 +31,8 @@ void printAdditionalMenu(int option)
 			std::cout << "Remove element (1) or move to additional stack (2)?" << std::endl;
 			break;
 		}
-	default:
-		break;
+		default:
+			break;
 	}
 }
 
@@ -51,11 +51,7 @@ int userInput(int numberOfMenu)
 			option = std::stoi(optionInput);
 			check = false;
 		}
-		//catch (std::invalid_argument)
-		//{
-		//	std::cout << "Only numbers are allowed." << std::endl;
-		//	check = true;
-		//}
+
 		catch (const std::exception&)
 		{
 			std::cout << "Other exception." << std::endl;
@@ -81,16 +77,21 @@ int userInput(int numberOfMenu)
 	}
 	return option;
 }
-void processInput(StackItem* headMain, StackItem* headSecond)
+void processInput(/*StackItem*& headMain, StackItem*& headSecond*/)
 {
-	int option = userInput();
+	StackItem* headMain = new StackItem;
+	StackItem* headSecond = new StackItem;
+	headMain = stackInit(headMain);
+	headSecond = stackInit(headSecond);
+
+	int option = userInput(numbOfOptionsMain);
 	int secondOption;
 	switch (option)
 	{
 		case(addOneItem):
 		{
 			printAdditionalMenu(option);
-			secondOption = userInput();
+			secondOption = userInput(numbOfOptionsSecond);
 			switch (secondOption)
 			{
 				case(1):
@@ -111,12 +112,12 @@ void processInput(StackItem* headMain, StackItem* headSecond)
 						{
 							std::cout << "The stack is empty. Nothing to move." << std::endl;
 						}
-					default:
-						break;
+						default:
+							break;
 					}
 				}
-			default:
-				break;
+				default:
+					break;
 			}
 			if (secondOption == 1)
 			{
@@ -129,7 +130,7 @@ void processInput(StackItem* headMain, StackItem* headSecond)
 			}
 		}
 
-	default:
-		break;
+		default:
+			break;
 	}
 }
