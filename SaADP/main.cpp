@@ -9,6 +9,5 @@ int main()
 	StackItem* headSecond = new StackItem;
 	headMain = stackInit(headMain);
 	headSecond = stackInit(headSecond);
-	printMainMenu();
 	workWithUser(headMain, headSecond);
 }

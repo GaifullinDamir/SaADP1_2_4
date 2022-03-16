@@ -5,9 +5,10 @@ enum userInterface
 {
 	MainMenu = 0,
 	SecondMenu = 1,
+	FourCases = 0,
+	TwoCases = 1,
 	NumbOfOptionsMain = 4,
 	NumbOfOptionsSecond = 2,
-	NumbOfStacks = 2
 };
 
 enum options
@@ -15,7 +16,9 @@ enum options
 	AddItem = 1,
 	AddMultipleItems,
 	DeleteItem,
-	PrintStack
+	PrintStack,
+	Continue = 1,
+	Exit = 2
 };
 
 enum secondaryCases
@@ -41,4 +44,6 @@ void caseAddItem(StackItem*& headMain, StackItem*& headSecond, int numberOfItems
 void caseDeleteItem(StackItem*& headMain, StackItem*& headSecond);
 
 void casePrintStack(StackItem*& headMain, StackItem*& headSecond);
+
+bool workOrExit();
 

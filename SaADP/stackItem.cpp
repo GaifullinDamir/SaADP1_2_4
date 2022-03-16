@@ -11,7 +11,6 @@ StackItem* stackInit(StackItem* head)
 
 void addItem(StackItem*& head)
 {
-	srand(static_cast<unsigned int>(time(0)));
 	try
 	{
 		StackItem* current = new StackItem;
@@ -21,7 +20,7 @@ void addItem(StackItem*& head)
 	}
 	catch (const std::exception&)
 	{
-		std::cout << "The stack is full. Can't be added." << std::endl;
+		std::cout << "   The stack is full. Can't be added." << std::endl;
 	}
 }
 
@@ -31,7 +30,7 @@ void addMultipleItems(StackItem*& head, int amount)
 	{
 		addItem(head);
 	}
-	std::cout << "Elements in quantity: " << amount << "- were added to the stack." << std::endl;
+	std::cout << "   Elements in quantity: " << amount << "- were added to the stack." << std::endl;
 	std::cout << std::endl;
 }
 
@@ -72,12 +71,12 @@ void deleteItem(StackItem*& head)
 		StackItem* current = head;
 		head = head -> previous;
 		delete current;
-		std::cout << "The element has been removed from the stack." << std::endl;
+		std::cout << "   The element has been removed from the stack." << std::endl;
 		std::cout << std::endl;
 	}
 	else
 	{
-		std::cout << "The stack is empty. Nothing to delete." << std::endl;
+		std::cout << "   The stack is empty. Nothing to delete." << std::endl;
 		std::cout << std::endl;
 	}
 }
@@ -86,7 +85,7 @@ void printStack(StackItem* head)
 {
 	if (emptyCheck(head))
 	{
-		std::cout << "The stack is empty. Nothing to print." << std::endl;
+		std::cout << "   The stack is empty. Nothing to print." << std::endl;
 	}
 	else
 	{
