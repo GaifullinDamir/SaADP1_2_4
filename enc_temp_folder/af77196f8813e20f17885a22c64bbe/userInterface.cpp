@@ -192,8 +192,8 @@ void caseDeleteItem(StackItem*& headMain, StackItem*& headSecond)
 			}
 			else if (check == false)
 			{
-						std::cout << "   The stack is empty. Nothing to delete." << std::endl;
-		std::cout << std::endl;
+				std::cout << "   The stack is empty. Nothing to delete." << std::endl;
+				std::cout << std::endl;
 			}
 			break;
 		}

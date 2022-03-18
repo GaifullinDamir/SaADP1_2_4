@@ -30,7 +30,7 @@ void addMultipleItems(StackItem*& head, int amount)
 	{
 		addItem(head);
 	}
-	std::cout << "   Elements in quantity: " << amount << "- were added to the stack." << std::endl;
+	std::cout << "   Elements in quantity: " << amount << " - were added to the stack." << std::endl;
 	std::cout << std::endl;
 }
 
@@ -64,20 +64,18 @@ bool emptyCheck(StackItem* head)
 	}
 }
 
-void deleteItem(StackItem*& head)
+bool deleteItem(StackItem*& head)
 {
 	if (!emptyCheck(head))
 	{
 		StackItem* current = head;
 		head = head -> previous;
 		delete current;
-		std::cout << "   The element has been removed from the stack." << std::endl;
-		std::cout << std::endl;
+		return true;
 	}
 	else
 	{
-		std::cout << "   The stack is empty. Nothing to delete." << std::endl;
-		std::cout << std::endl;
+		return false;
 	}
 }
 
@@ -92,8 +90,23 @@ void printStack(StackItem* head)
 		StackItem* current = head;
 		while (current != NULL)
 		{
-			std::cout << current -> data << std::endl;
+			std::cout << "   " << current->data << std::endl;
 			current = current -> previous;
+		}
+	}
+}
+
+void clearMemory(StackItem*& headFirst, StackItem*& headSecond)
+{
+	StackItem* current = NULL;
+	
+	for (int stackNumber = 0; stackNumber < 2; stackNumber++)
+	{
+		if (stackNumber == 0) { current = headFirst; }
+		else if (stackNumber == 1) { current = headSecond; }
+		while (current != NULL)
+		{
+			deleteItem(current);
 		}
 	}
 }

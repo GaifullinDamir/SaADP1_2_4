@@ -16,6 +16,8 @@ bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond);
 
 bool emptyCheck(StackItem* head);
 
-void deleteItem(StackItem*& head);
+bool deleteItem(StackItem*& head);
 
 void printStack(StackItem* head);
+
+void clearMemory(StackItem*& headFirst, StackItem*& headSecond);
