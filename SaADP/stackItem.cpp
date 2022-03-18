@@ -108,5 +108,6 @@ void clearMemory(StackItem*& headFirst, StackItem*& headSecond)
 		{
 			deleteItem(current);
 		}
+		headFirst = NULL; headSecond = NULL;
 	}
 }
