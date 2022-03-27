@@ -14,7 +14,7 @@ void addMultipleItems(StackItem*& head, int amount);
 
 bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond);
 
-bool emptyCheck(StackItem* head);
+bool isEmpty(StackItem* head);
 
 bool deleteItem(StackItem*& head);
 

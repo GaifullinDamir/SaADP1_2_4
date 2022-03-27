@@ -11,17 +11,10 @@ StackItem* stackInit(StackItem* head)
 
 void addItem(StackItem*& head)
 {
-	try
-	{
-		StackItem* current = new StackItem;
-		current -> previous = head;
-		current -> data = rand();
-		head = current;
-	}
-	catch (const std::exception&)
-	{
-		std::cout << "   The stack is full. Can't be added." << std::endl;
-	}
+	StackItem* current = new StackItem;
+	current -> previous = head;
+	current -> data = rand();
+	head = current;
 }
 
 void addMultipleItems(StackItem*& head, int amount)
@@ -36,7 +29,7 @@ void addMultipleItems(StackItem*& head, int amount)
 
 bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond)
 {
-	if(!emptyCheck(headFirst))
+	if(!isEmpty(headFirst))
 	{
 		StackItem* current = headFirst;
 		headFirst = headFirst -> previous;
@@ -44,44 +37,30 @@ bool moveToSecondaryStack(StackItem*& headFirst, StackItem*& headSecond)
 		headSecond = current;
 		return true;
 	}
-	else
-	{
-		return false;
-	}
-
+	else return false;
 }
 
-
-bool emptyCheck(StackItem* head)
+bool isEmpty(StackItem* head)
 {
-	if (head == NULL)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	if (head == NULL) { return true; }
+	else return false;
 }
 
 bool deleteItem(StackItem*& head)
 {
-	if (!emptyCheck(head))
+	if (!isEmpty(head))
 	{
 		StackItem* current = head;
-		head = head -> previous;
+		head = head->previous;
 		delete current;
 		return true;
 	}
-	else
-	{
-		return false;
-	}
+	else return false;
 }
 
 void printStack(StackItem* head)
 {
-	if (emptyCheck(head))
+	if (isEmpty(head))
 	{
 		std::cout << "   The stack is empty. Nothing to print." << std::endl;
 	}
